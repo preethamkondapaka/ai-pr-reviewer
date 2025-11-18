@@ -16,8 +16,8 @@ iniconfig
 isort
 jsonpatch
 jsonpointer
-langchain
-langchain-core
+langchain-core==0.2.43  # Update to a valid version
+langchain==1.0.7  # Ensure it's compatible with langchain-core
 langgraph
 langgraph-checkpoint
 langgraph-prebuilt
@@ -49,3 +49,4 @@ typing_extensions
 urllib3
 xxhash
 zstandard
+
