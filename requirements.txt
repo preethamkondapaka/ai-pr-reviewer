@@ -39,11 +39,10 @@ requests-toolbelt
 sniffio
 tenacity
 tomlkit
-typing-inspection
-typing_extensions
 urllib3
 xxhash
 zstandard
+
 
 
 
