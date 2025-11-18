@@ -2,7 +2,7 @@ import os
 from github import Github, Auth
 
 # Set up GitHub authentication
-token = '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'  # Personal Access Token for GitHub API access
+token = os.getenv("GITHUB_TOKEN")  # Personal Access Token for GitHub API access
 g = Github(auth=Auth.Token(token))
 
 # GitHub repository and PR details
