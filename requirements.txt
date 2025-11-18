@@ -2,7 +2,7 @@ annotated-types==0.7.0
 anyio==4.5.2
 astroid==2.15.7  # Updated to a compatible version
 certifi==2025.11.12
-cffi==2.0.0
+cffi==1.15.0
 charset-normalizer==3.4.4
 colorama==0.4.6
 coverage==7.12.0
@@ -49,3 +49,4 @@ typing_extensions==4.15.0
 urllib3==2.5.0
 xxhash==3.6.0
 zstandard==0.25.0
+
