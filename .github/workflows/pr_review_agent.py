@@ -7,7 +7,7 @@ g = Github(token)
 
 # GitHub repository and PR details
 repo_name = "preethamkondapaka/ai-pr-reviewer"
-pr_number = f429163  # Replace with dynamic PR number from event
+pr_number = 1  # Replace with dynamic PR number from event
 
 # Function to check CI/CD status
 def check_pr_status(repo_name, pr_number):
