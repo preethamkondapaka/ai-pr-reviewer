@@ -1,6 +1,5 @@
 import os
 from github import Github
-from langchain.agents import initialize_agent, Tool, AgentType
 
 # Set up GitHub authentication
 token = os.getenv("GITHUB_TOKEN")  # Personal Access Token for GitHub API access
@@ -8,25 +7,27 @@ g = Github(token)
 
 # GitHub repository and PR details
 repo_name = "preethamkondapaka/ai-pr-reviewer"
-pr_number = 1  # Replace with dynamic PR number from event
+pr_number = f429163  # Replace with dynamic PR number from event
 
 # Function to check CI/CD status
 def check_pr_status(repo_name, pr_number):
     repo = g.get_repo(repo_name)
     pr = repo.get_pull(pr_number)
     
-    # Convert PaginatedList to list and reverse it
-    commits = list(pr.get_commits())  # Convert the PaginatedList to a list
-    statuses = commits[::-1]  # Reverse the list
+    # Get commits from PR
+    commits = pr.get_commits()  # This returns a list of commits
     
-    # Find the latest commit status (this assumes a basic CI status check is running)
-    for status in statuses:
-        if status.statuses:  # Checking if any status is returned
-            latest_status = status.statuses[0]
-            if latest_status.state == "success":
+    # Loop through each commit and fetch its status
+    for commit in commits:
+        statuses = commit.get_statuses()  # Use get_statuses() to retrieve status checks for each commit
+        
+        # Check the status of the latest commit's status checks
+        for status in statuses:
+            if status.state == "success":
                 return "approved"
-            elif latest_status.state == "error":
+            elif status.state == "error":
                 return "blocked"
+    
     return "waiting"
 
 # Function to approve or block PR
